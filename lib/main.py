@@ -16,7 +16,7 @@ try:
     from lib.core.iprange import IpRange, InvalidIPAddress
 except Exception, err:
     from lib.core.exceptions import CrowbarExceptions
-
+	
     raise CrowbarExceptions(str(err))
 
 __version__ = '0.3.5-dev'
@@ -222,6 +222,9 @@ class Main:
                 raise CrowbarExceptions(self.vpn_warning)
 
         for ip in self.ip_list:
+            if type(ip) is dict:
+                port = ip['port']
+                ip = ip['ipaddr']
             if not self.args.quiet:
                 self.logger.output_file("Trying %s:%s" % (ip, port))
 
@@ -362,6 +365,11 @@ class Main:
             raise CrowbarExceptions(str(err))
 
         for ip in self.ip_list:
+            
+            if type(ip) is dict:
+                port = ip['port']
+                ip = ip['ipaddr']
+				
             if not self.args.quiet:
                 self.logger.output_file("Trying %s:%s" % (ip, port))
 
@@ -443,6 +451,9 @@ class Main:
             raise CrowbarExceptions(mess)
 
         for ip in self.ip_list:
+            if type(ip) is dict:
+                port = ip['port']
+                ip = ip['ipaddr']
             if not self.args.quiet:
                 self.logger.output_file("Trying %s:%s" % (ip, port))
 

@@ -47,6 +47,16 @@ class IpRange:
             addr = res.group(1)
             cidrmask = res.group(2)
             return self.cidr_iprange(addr, cidrmask)
+
+        port_re = re.compile(r'''(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})   # The IP address
+                             :(\d{1,5})                                 # The port
+                          ''', re.VERBOSE)
+        res = port_re.match(ipaddr)
+        if res:
+            addr = res.group(1)
+            port = res.group(2)
+            return self.port_iprange(addr, port)
+
         wild_re = re.compile(r'''(\d{1,3}|\*)\.
                              (\d{1,3}|\*)\.
                              (\d{1,3}|\*)\.
@@ -74,6 +84,9 @@ class IpRange:
         while (b <= e):
             yield self.binary_to_ipaddr(b)
             b = b + 1
+
+    def port_iprange(self, ipaddr, port):
+	yield {'ipaddr':ipaddr, 'port':port}
 
     def wildcard_iprange(ipaddr):
         beginning = []
