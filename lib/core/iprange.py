@@ -29,7 +29,6 @@ class IpRange:
         return socket.inet_ntoa(struct.pack('!I', ipbinary))
 
     def iprange(self, ipaddr):
-	print(ipaddr)
         span_re = re.compile(r'''(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})   # The beginning IP address
                              \s*-\s*
                              (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})       # The end IP address
