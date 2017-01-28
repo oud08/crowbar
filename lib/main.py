@@ -374,6 +374,7 @@ class Main:
 					port) + " - " + user + ":" + password + bcolors.ENDC
 				self.logger.output_file(result)
 				Main.is_success = 1
+				os.kill(proc.pid, signal.SIGQUIT)
 				break
 			elif re.search(self.rdp_display_error, line):
 				mess = "Please check \$DISPLAY is properly set. See README.md %s" % self.crowbar_readme
@@ -460,6 +461,7 @@ class Main:
 						pool.add_task(self.rdplogin, ip, self.args.username, password, port)
 				else:
 					pool.add_task(self.rdplogin, ip, self.args.username, self.args.passwd, port)
+						
 		pool.wait_completion()
 
 	def sshlogin(self, ip, port, user, keyfile, timeout):
