@@ -226,7 +226,7 @@ class Main:
 						ip = ip['ipaddr']
 					if not self.args.quiet:
 						self.logger.output_file("Discovery mode - port scanning: %s:%s" % (ip , port))
-				self.ip_list = self.nmap.port_scan(ip, port)
+					self.ip_list = self.nmap.port_scan(ip, port)
 
 		try:
 			pool = ThreadPool(int(self.args.thread))
@@ -336,7 +336,7 @@ class Main:
 						ip = ip['ipaddr']
 					if not self.args.quiet:
 						self.logger.output_file("Discovery mode - port scanning: %s:%s" % (ip , port))
-				self.ip_list = self.nmap.port_scan(ip, port)
+					self.ip_list = self.nmap.port_scan(ip, port)
 
 		if not os.path.isfile(self.args.key_file):
 			mess = "Key file: \"%s\" doesn't exists." % os.path.abspath(self.args.key_file)
@@ -403,7 +403,7 @@ class Main:
 						ip = ip['ipaddr']
 					if not self.args.quiet:
 						self.logger.output_file("Discovery mode - port scanning: %s:%s" % (ip , port))
-				self.ip_list = self.nmap.port_scan(ip, port)
+					self.ip_list = self.nmap.port_scan(ip, port)
 		
 
 		try:
@@ -501,7 +501,7 @@ class Main:
 						ip = ip['ipaddr']
 					if not self.args.quiet:
 						self.logger.output_file("Discovery mode - port scanning: %s:%s" % (ip , port))
-				self.ip_list = self.nmap.port_scan(ip, port)
+					self.ip_list = self.nmap.port_scan(ip, port)
 
 		try:
 			pool = ThreadPool(self.args.thread)
