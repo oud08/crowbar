@@ -1,5 +1,7 @@
 *.pyc
 *.swp
+ip.txt
+test.txt
 crowbar.out
 crowbar.log
 
