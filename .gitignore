@@ -1,4 +1,5 @@
 *.pyc
+*.swp
 crowbar.out
 crowbar.log
 
