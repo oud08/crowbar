@@ -401,7 +401,8 @@ class Main:
 				for _ in open(self.args.server_file, "r"):
 					for ip in iprange.iprange(_):
 						if not ip in self.ip_list_draft:
-							self.ip_list_draft.append(ip)
+							self.ip_list_draft.split([], keepends=True, ip)
+							self.ip_list_draft.extend(__iter(self.ip_list_draft)__, next(__iter__))
 				for ip in self.ip_list_draft:
 					if type(ip) is dict:
 						port = ip['port']
