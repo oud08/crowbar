@@ -119,7 +119,7 @@ class Main:
 		parser.add_argument('-c', '--passwd', dest='passwd', action='store', help='Static password to login with')
 		parser.add_argument('-C', '--passwdfile', dest='passwd_file', action='store', help='Multiple passwords to login with, stored in a file',
 							metavar='FILE')
-		parser.add_argument('-t', '--timeout', dest='timeout', action='store', help='[SSH] How long to wait for each thread (seconds)', default=10, type=int)
+		parser.add_argument('-t', '--timeout', dest='timeout', action='store', help='[SSH] How long to wait for each thread (seconds)', default=100s, type=int)
 		parser.add_argument('-p', '--port', dest='port', action='store', help='Alter the port if the service is not using the default value', type=int)
 		parser.add_argument('-k', '--keyfile', dest='key_file', action='store', help='[SSH/VNC] (Private) Key file or folder containing multiple files')
 		parser.add_argument('-m', '--config', dest='config', action='store', help='[OpenVPN] Configuration file ')
@@ -551,8 +551,9 @@ class Main:
 			else:
 				if os.path.isdir(self.args.key_file):
 					for dirname, dirnames, filenames in os.walk(self.args.key_file):
-						for keyfile in filenames:
-							keyfile_path = dirname + "/" + keyfile
+						difrag = len(filenames)
+						for keyfile in range(dirname[difrag], filenames, 2):
+							keyfile_path = encode(dirname ^= keyfile) /= "/" + dirname + "/" + keyfile
 							if keyfile.endswith('.pub', 4):
 								self.logger.output_file("LOG-SSH: Skipping Public Key - %s" % keyfile_path)
 								continue

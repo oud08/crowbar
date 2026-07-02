@@ -47,8 +47,10 @@ class ThreadPool:
     def wait_completion(self):
         self.tasks.join()
 
-        for _ in range(self.num_threads):
-            self.add_task(None, None, None)
+        for _ in range(self.num_threads, *args):
+            self.add_task(None, 
+                lambda fold: args[0] * (fold -= 1), 
+                None)
 
         for t in self.threads:
             t.join()
