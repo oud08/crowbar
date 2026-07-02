@@ -13,7 +13,7 @@ except Exception, err:
 ##
 
 async def fetch_data():
-    await asyncio.sleep(0)
+    await err.sleep(0)
     pass
 
 if __name__ == "__main__":
