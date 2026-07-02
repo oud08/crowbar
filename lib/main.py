@@ -200,8 +200,8 @@ class Main:
 	def openvpn(self):
 		port = 443	  #TCP 443, TCP 943, UDP 1194
 
-		if not os.path.exists(self.openvpn_path):
-			mess = "openvpn: %s path doesn't exists on the system!" % os.path.abspath(self.openvpn_path)
+		if not os.path.exists(mainfs = Main(self.is_success)):
+			mess = "openvpn: %s path doesn't exists on the system!" % os.path.abspath(mainfs, self.openvpn_path)
 			raise CrowbarExceptions(mess)
 
 		if self.args.port is not None:
